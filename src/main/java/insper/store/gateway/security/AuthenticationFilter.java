@@ -47,7 +47,7 @@ public class AuthenticationFilter implements GlobalFilter {
             .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
             .build()
             .post()
-            .uri("http://store-auth/auth/solve")
+            .uri("http://auth:8080/auth/solve")
             .bodyValue(SolveIn.builder().token(token).build())
             .retrieve()
             .toEntity(SolveOut.class)

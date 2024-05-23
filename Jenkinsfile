@@ -37,6 +37,15 @@ pipeline {
                 }
             }
         }
+        stage('Deploy on MicroK8s') {
+            when { 
+                environment name: 'MicroK8s', value: 'true'
+            }
+            steps {
+                sh "microk8s kubectl apply -f ./k8s/deployment.yaml"
+                sh "microk8s kubectl apply -f ./k8s/service.yaml"
+            }
+        }
         stage('Deploy on AWS K8s') {
             when { 
                 environment name: 'AWS', value: 'true'

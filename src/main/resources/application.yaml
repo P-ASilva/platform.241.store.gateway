@@ -6,6 +6,8 @@ spring:
     name: gateway
 
   cloud:
+    loadbalancer:
+      enabled: false
     discovery:
       locator:
         enabled: true
@@ -35,8 +37,8 @@ management:
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
+    fetch-registry: false
     service-url:
       defaultZone: http://${DISCOVERY_HOST}:8761/eureka/
 
